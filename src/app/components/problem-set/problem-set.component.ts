@@ -10,7 +10,7 @@ import { FileLoaderService } from 'src/app/solutions/file-loader.service';
   imports: [CommonModule],
   template: `
     <div class="mb-4" *ngIf="{solution1: solution1$ | async, solution2: solution2$ | async} as vm">
-      <h5>{{title}}</h5>
+      <h6>{{title}}</h6>
       <section class="input-group mb-1">
         <span class="input-group-text">Puzzle 1</span>
         <input class="form-control" type="text" readonly [value]="vm.solution1" />

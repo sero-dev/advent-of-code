@@ -4,13 +4,15 @@ import { RouterOutlet } from '@angular/router';
 import { ProblemSetComponent } from "./components/problem-set/problem-set.component";
 import { NotQuiteLispService } from './solutions/2015/day-01/not-quite-lisp.service';
 import { NoMathAllowedService } from './solutions/2015/day-02/no-math-allowed.service';
+import { PerfectlySphericalService } from './solutions/2015/day-03/perfectly-spherical.service';
+import { IdealStockingService } from './solutions/2015/day-04/ideal-stocking.service';
 
 @Component({
     selector: 'app-root',
     standalone: true,
     template: `
     <main class="container mt-5">
-      <h1>2015</h1>
+      <h1 class="mb-4">2015</h1>
       <div class="row">
         <problem-set
           class="col-4"
@@ -25,6 +27,20 @@ import { NoMathAllowedService } from './solutions/2015/day-02/no-math-allowed.se
           [service]="noMathAllowedService" 
           file="assets/puzzles/2015/day-02.txt">
         </problem-set>
+
+        <problem-set
+          class="col-4"
+          title="Day 3: Perfectly Spherical Houses in a Vacuum" 
+          [service]="perfectlySphericalService" 
+          file="assets/puzzles/2015/day-03.txt">
+        </problem-set>
+
+        <problem-set
+          class="col-4"
+          title="Day 4: The Ideal Stocking Stuffer" 
+          [service]="idealStockingService" 
+          file="assets/puzzles/2015/day-04.txt">
+        </problem-set>
       </div>
     </main>
     
@@ -34,6 +50,8 @@ import { NoMathAllowedService } from './solutions/2015/day-02/no-math-allowed.se
 export class AppComponent {
   constructor(
     public notQuiteLispService: NotQuiteLispService,
-    public noMathAllowedService: NoMathAllowedService
+    public noMathAllowedService: NoMathAllowedService,
+    public perfectlySphericalService: PerfectlySphericalService,
+    public idealStockingService: IdealStockingService,
   ) {}
 }
