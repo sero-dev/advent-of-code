@@ -1,13 +1,13 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { AsyncPipe, CommonModule } from '@angular/common';
+import { AsyncPipe, NgIf } from '@angular/common';
 import { ProblemService } from 'src/app/solutions/problem.service';
-import { Observable, map, of } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { FileLoaderService } from 'src/app/solutions/file-loader.service';
 
 @Component({
   selector: 'problem-set',
   standalone: true,
-  imports: [AsyncPipe],
+  imports: [AsyncPipe, NgIf],
   template: `
     <div
       class="mb-4"

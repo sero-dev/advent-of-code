@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { NgIf } from '@angular/common';
 import { ProblemSetComponent } from './components/problem-set/problem-set.component';
 import { NotQuiteLispService } from './solutions/2015/day-01/not-quite-lisp.service';
 import { NoMathAllowedService } from './solutions/2015/day-02/no-math-allowed.service';
@@ -10,7 +9,7 @@ import { IdealStockingService } from './solutions/2015/day-04/ideal-stocking.ser
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, ProblemSetComponent],
+  imports: [NgIf, ProblemSetComponent],
   template: `
     <main class="container mt-5">
       <button class="btn btn-primary" (click)="show = !show">
