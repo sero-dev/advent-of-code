@@ -1,8 +1,14 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  inject,
+} from '@angular/core';
 import { AsyncPipe, NgIf } from '@angular/common';
 import { ProblemService } from 'src/app/solutions/problem.service';
-import { Observable, map } from 'rxjs';
 import { FileLoaderService } from 'src/app/solutions/file-loader.service';
+import { Observable, map } from 'rxjs';
 
 @Component({
   selector: 'problem-set',
@@ -39,14 +45,14 @@ import { FileLoaderService } from 'src/app/solutions/file-loader.service';
   `,
 })
 export class ProblemSetComponent implements OnChanges {
+  private fileLoader = inject(FileLoaderService);
+
   @Input({ required: true }) title!: string;
   @Input({ required: true }) service!: ProblemService;
   @Input({ required: true }) file!: string;
 
   solution1$?: Observable<any>;
   solution2$?: Observable<any>;
-
-  constructor(private fileLoader: FileLoaderService) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['file']) {

@@ -5,6 +5,7 @@ import { NotQuiteLispService } from './solutions/2015/day-01/not-quite-lisp.serv
 import { NoMathAllowedService } from './solutions/2015/day-02/no-math-allowed.service';
 import { PerfectlySphericalService } from './solutions/2015/day-03/perfectly-spherical.service';
 import { IdealStockingService } from './solutions/2015/day-04/ideal-stocking.service';
+import { TrebuchetService } from './solutions/2023/day-01/trebuchet.service';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +13,10 @@ import { IdealStockingService } from './solutions/2015/day-04/ideal-stocking.ser
   imports: [NgIf, ProblemSetComponent],
   template: `
     <main class="container mt-5">
-      <button class="btn btn-primary" (click)="show = !show">
-        {{ show ? 'Hide' : 'Show' }}
+      <button class="btn btn-primary" (click)="show2015 = !show2015">
+        {{ show2015 ? 'Hide' : 'Show' }}
       </button>
-      <ng-container *ngIf="show">
+      <ng-container *ngIf="show2015">
         <h1 class="mb-4">2015</h1>
         <div class="row">
           <problem-set
@@ -47,6 +48,20 @@ import { IdealStockingService } from './solutions/2015/day-04/ideal-stocking.ser
           />
         </div>
       </ng-container>
+      <button class="btn btn-primary" (click)="show2023 = !show2023">
+        {{ show2023 ? 'Hide' : 'Show' }}
+      </button>
+      <ng-container *ngIf="show2023">
+        <h1 class="mb-4">2015</h1>
+        <div class="row">
+          <problem-set
+            class="col-4"
+            title="Day 1: Trebuchet?!"
+            [service]="trebuchetService"
+            file="assets/puzzles/2023/day-01.txt"
+          />
+        </div>
+      </ng-container>
     </main>
   `,
 })
@@ -56,5 +71,8 @@ export class AppComponent {
   public perfectlySphericalService = inject(PerfectlySphericalService);
   public idealStockingService = inject(IdealStockingService);
 
-  show: boolean = false;
+  public trebuchetService = inject(TrebuchetService);
+
+  show2015: boolean = false;
+  show2023: boolean = false;
 }
