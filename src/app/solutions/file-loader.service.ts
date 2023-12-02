@@ -1,12 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FileLoaderService {
-
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
 
   getInput(file: string) {
     return this.http.get(file, { responseType: 'text' });
