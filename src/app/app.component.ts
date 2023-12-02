@@ -1,57 +1,67 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { ProblemSetComponent } from "./components/problem-set/problem-set.component";
+import { ProblemSetComponent } from './components/problem-set/problem-set.component';
 import { NotQuiteLispService } from './solutions/2015/day-01/not-quite-lisp.service';
 import { NoMathAllowedService } from './solutions/2015/day-02/no-math-allowed.service';
 import { PerfectlySphericalService } from './solutions/2015/day-03/perfectly-spherical.service';
 import { IdealStockingService } from './solutions/2015/day-04/ideal-stocking.service';
 
 @Component({
-    selector: 'app-root',
-    standalone: true,
-    template: `
+  selector: 'app-root',
+  standalone: true,
+  template: `
     <main class="container mt-5">
-      <h1 class="mb-4">2015</h1>
-      <div class="row">
-        <problem-set
-          class="col-4"
-          title="Day 1: Not Quite Lisp" 
-          [service]="notQuiteLispService" 
-          file="assets/puzzles/2015/day-01.txt">
-        </problem-set>
+      <button class="btn btn-primary" (click)="show = !show">
+        {{ show ? 'Hide' : 'Show' }}
+      </button>
+      <ng-container *ngIf="show">
+        <h1 class="mb-4">2015</h1>
+        <div class="row">
+          <problem-set
+            class="col-4"
+            title="Day 1: Not Quite Lisp"
+            [service]="notQuiteLispService"
+            file="assets/puzzles/2015/day-01.txt"
+          >
+          </problem-set>
 
-        <problem-set
-          class="col-4"
-          title="Day 2: I Was Told There Would Be No Math" 
-          [service]="noMathAllowedService" 
-          file="assets/puzzles/2015/day-02.txt">
-        </problem-set>
+          <problem-set
+            class="col-4"
+            title="Day 2: I Was Told There Would Be No Math"
+            [service]="noMathAllowedService"
+            file="assets/puzzles/2015/day-02.txt"
+          >
+          </problem-set>
 
-        <problem-set
-          class="col-4"
-          title="Day 3: Perfectly Spherical Houses in a Vacuum" 
-          [service]="perfectlySphericalService" 
-          file="assets/puzzles/2015/day-03.txt">
-        </problem-set>
+          <problem-set
+            class="col-4"
+            title="Day 3: Perfectly Spherical Houses in a Vacuum"
+            [service]="perfectlySphericalService"
+            file="assets/puzzles/2015/day-03.txt"
+          >
+          </problem-set>
 
-        <problem-set
-          class="col-4"
-          title="Day 4: The Ideal Stocking Stuffer" 
-          [service]="idealStockingService" 
-          file="assets/puzzles/2015/day-04.txt">
-        </problem-set>
-      </div>
+          <problem-set
+            class="col-4"
+            title="Day 4: The Ideal Stocking Stuffer"
+            [service]="idealStockingService"
+            file="assets/puzzles/2015/day-04.txt"
+          >
+          </problem-set>
+        </div>
+      </ng-container>
     </main>
-    
   `,
-    imports: [CommonModule, RouterOutlet, ProblemSetComponent]
+  imports: [CommonModule, RouterOutlet, ProblemSetComponent],
 })
 export class AppComponent {
+  show: boolean = false;
+
   constructor(
     public notQuiteLispService: NotQuiteLispService,
     public noMathAllowedService: NoMathAllowedService,
     public perfectlySphericalService: PerfectlySphericalService,
-    public idealStockingService: IdealStockingService,
+    public idealStockingService: IdealStockingService
   ) {}
 }
